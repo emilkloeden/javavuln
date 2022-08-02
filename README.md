@@ -5,8 +5,9 @@ JavaVuln allows you to view your projects, the libraries they depend on and the 
 # Getting Started
 
 1. Clone the repo
-2. Create a .env file under `javavuln-api` with the properties found under `javavuln-api/example.env`
-3. Populate a Sqlite database in accordance with the following schema:
+2. Create a `.env` file under `javavuln-api` with the properties found under `javavuln-api/example.env`
+3. Create a `.env` file under `javavuln` with the properties found under `javavuln/example.env`
+4. Populate a Sqlite database in accordance with the following schema:
 
 ```sql
 CREATE TABLE projects (
@@ -66,9 +67,9 @@ CREATE TABLE library_cves (
 );
 ```
 
-4. Open a terminal window and change directory into the `javavuln-api` subdirectory.
-5. Run `npm install`
-6. Run `npm start` or `npm run dev` to start the API server.
-7. Open a second terminal window and change into the `javavuln` subdirectory.
-8. Run `npm install`
-9. Run `npm run dev -- --open` to start the web server.
+5. Open a terminal window and change directory into the `javavuln-api` subdirectory.
+6. Run `npm install`
+7. Run `npm start` or `npm run dev` to start the API server.
+8. Open a second terminal window and change into the `javavuln` subdirectory.
+9. Run `npm install`
+10. Run `npm run dev -- --open` to start the web server.
