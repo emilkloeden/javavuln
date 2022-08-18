@@ -3,6 +3,7 @@
 	import ProjectsList from '../../../components/ProjectsList.svelte';
 	import LatestVersionCard from '../../../components/LatestVersionCard.svelte';
 	import LibrarySummaryTable from '../../../components/LibrarySummaryTable.svelte';
+	import MavenDependencyXml from '../../../components/MavenDependencyXML.svelte';
 
 	export let data;
 	let { path, name, version, group_id, artifact_id, latest_version, projects, cves } = data;
@@ -27,6 +28,9 @@
 					<LatestVersionCard {latest_version} />
 				</div>
 			{/if}
+			{#if group_id && artifact_id && version}
+				<MavenDependencyXml {group_id} {artifact_id} {version} />
+			{/if}
 		</div>
 		{#if cves}
 			<div class="one-column">
@@ -47,8 +51,10 @@
 	.three-columns {
 		display: flex;
 		justify-content: flex-start;
+		flex-wrap: wrap;
+		gap: 2rem;
 	}
 	.col {
-		width: 50%;
+		width: 20%;
 	}
 </style>

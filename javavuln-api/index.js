@@ -208,25 +208,6 @@ app.get('/cves/:cve/projects', (req, res) => {
     })
 })
 
-// app.get('/libraries/:libraryId', (req, res) => {
-//     const { libraryId } = req.params;
-//     const stmt = db.prepare(Q_LIBRARY)
-// })
-
-// app.get('/projects/:projectId/cves', (req, res) => {
-//     const { projectId } = req.params;
-//     console.log(projectId)
-//     const stmt = db.prepare(Q_PROJECT_AGG_CVES, [projectId])
-//     stmt.all((err, rows) => {
-//         if (err) {
-//             res.status(404)
-//             res.send()
-//         } else {
-//             res.json(rows)
-//         }
-//     })
-// })
-
 app.listen(apiPort, () => console.log(`Listening on ${apiPort}. Using CORS config: ${JSON.stringify(corsOptions)}`))
 
 function rows2CVEs(rows) {
