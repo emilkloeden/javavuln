@@ -1,19 +1,6 @@
-<script context="module">
-	export const load = async ({ fetch }) => {
-		const { VITE_API_PORT } = import.meta.env;
-		const res = await fetch(`http://localhost:${VITE_API_PORT}/projects`);
-		const projects = await res.json();
-
-		return {
-			props: {
-				projects
-			}
-		};
-	};
-</script>
-
 <script>
-	export let projects;
+	export let data;
+	let { projects } = data;
 </script>
 
 <div class="main">

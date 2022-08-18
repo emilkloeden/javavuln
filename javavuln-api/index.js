@@ -21,9 +21,10 @@ const db = new sqlite3.Database(dbName, sqlite3.OPEN_READONLY, (err) => {
 const app = express()
 
 const corsOptions = {
-    origin: `http://localhost:${frontEndPort}`
+    origin: `http://site:${frontEndPort}`
 }
-app.use(cors(corsOptions))
+// app.use(cors(corsOptions))
+app.use(cors())
 app.use(morgan('combined'))
 app.use(bodyParser.urlencoded({
     extended: true
@@ -226,7 +227,7 @@ app.get('/cves/:cve/projects', (req, res) => {
 //     })
 // })
 
-app.listen(apiPort, () => console.log(`Listening on ${apiPort}`))
+app.listen(apiPort, () => console.log(`Listening on ${apiPort}. Using CORS config: ${JSON.stringify(corsOptions)}`))
 
 function rows2CVEs(rows) {
     return rows.map(row2CVE);

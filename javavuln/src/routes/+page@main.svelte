@@ -1,25 +1,7 @@
-<script context="module">
-	export const load = async ({ fetch }) => {
-		const { VITE_API_PORT } = import.meta.env;
-		const res = await fetch(`http://localhost:${VITE_API_PORT}`);
-		const { projects, libraries, vulnerabilities } = await res.json();
-
-		return {
-			props: {
-				projects,
-				libraries,
-				vulnerabilities
-			}
-		};
-	};
-</script>
-
 <script>
 	import HeaderCount from '../components/HeaderCount.svelte';
-
-	export let projects;
-	export let libraries;
-	export let vulnerabilities;
+	export let data;
+	let { projects, libraries, vulnerabilities } = data;
 </script>
 
 <div class="page">

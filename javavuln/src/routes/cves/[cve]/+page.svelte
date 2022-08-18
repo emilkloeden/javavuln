@@ -1,64 +1,26 @@
-<script context="module">
-	export const load = async ({ fetch, params }) => {
-		const { cve } = params;
-		const { VITE_API_PORT } = import.meta.env;
-		const urlBase = `http://localhost:${VITE_API_PORT}`;
-		const res = await fetch(`${urlBase}/cves/${cve}`);
-		const cveDetails = await res.json();
-		const {
-			description,
-			published_date,
-			severity,
-			cvss_v3,
-			last_modified_date,
-			cvss_v3_data,
-			cvss_v2_data,
-			references
-		} = cveDetails;
-
-		const cveLibrariesRes = await fetch(`${urlBase}/cves/${cve}/libraries`);
-		const cveLibraries = await cveLibrariesRes.json();
-
-		const cveProjectsRes = await fetch(`${urlBase}/cves/${cve}/projects`);
-		const cveProjects = await cveProjectsRes.json();
-
-		return {
-			props: {
-				cve,
-				description,
-				published_date,
-				severity,
-				cvss_v3,
-				last_modified_date,
-				cvss_v3_data,
-				cvss_v2_data,
-				references,
-				cveLibraries,
-				cveProjects
-			}
-		};
-	};
-</script>
-
 <script>
-	import CVSSV3Table from '../../components/CVSSV3Table.svelte';
-	import CVSSV2Table from '../../components/CVSSV2Table.svelte';
-	import BasicLibraryTable from '../../components/BasicLibraryTable.svelte';
-	import ProjectsList from '../../components/ProjectsList.svelte';
-	import SeverityLabel from '../../components/SeverityLabel.svelte';
-	import CveSummaryTable from '../../components/CVESummaryTable.svelte';
+	import CVSSV3Table from '../../../components/CVSSV3Table.svelte';
+	import CVSSV2Table from '../../../components/CVSSV2Table.svelte';
+	import BasicLibraryTable from '../../../components/BasicLibraryTable.svelte';
+	import ProjectsList from '../../../components/ProjectsList.svelte';
+	import SeverityLabel from '../../../components/SeverityLabel.svelte';
+	import CveSummaryTable from '../../../components/CVESummaryTable.svelte';
 
-	export let cve;
-	export let description;
-	export let published_date;
-	export let severity;
-	export let cvss_v3;
-	export let last_modified_date;
-	export let cvss_v3_data;
-	export let cvss_v2_data;
-	export let references;
-	export let cveLibraries;
-	export let cveProjects;
+	export let data;
+
+	let {
+		cve,
+		description,
+		published_date,
+		severity,
+		cvss_v3,
+		last_modified_date,
+		cvss_v3_data,
+		cvss_v2_data,
+		references,
+		cveLibraries,
+		cveProjects
+	} = data;
 </script>
 
 <div class="main container">

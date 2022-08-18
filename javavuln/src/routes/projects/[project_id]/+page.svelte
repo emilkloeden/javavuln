@@ -1,25 +1,6 @@
-<script context="module">
-	export const load = async ({ fetch, params }) => {
-		const { project_id } = params;
-		const { VITE_API_PORT } = import.meta.env;
-		const projectRes = await fetch(`http://localhost:${VITE_API_PORT}/projects/${project_id}`);
-		const { project_name: projectName } = await projectRes.json();
-
-		const res = await fetch(`http://localhost:${VITE_API_PORT}/projects/${project_id}/libraries`);
-		const projectLibraries = await res.json();
-
-		return {
-			props: {
-				projectName,
-				projectLibraries
-			}
-		};
-	};
-</script>
-
 <script>
-	export let projectName;
-	export let projectLibraries;
+	export let data;
+	let { projectName, projectLibraries } = data;
 </script>
 
 <div class="main">
