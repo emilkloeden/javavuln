@@ -245,6 +245,7 @@ ORDER BY l.name`
 
 const Q_CVE_PROJECTS = `SELECT 
 DISTINCT
+    p.id,
     p.project_name
 FROM
     library_cves lc
