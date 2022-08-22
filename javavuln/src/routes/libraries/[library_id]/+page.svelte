@@ -57,4 +57,7 @@
 	.col {
 		width: 20%;
 	}
+	.main {
+		padding-bottom: 1rem;
+	}
 </style>

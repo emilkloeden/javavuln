@@ -26,10 +26,6 @@
 <style>
 	h2 {
 		margin-top: 0.5rem;
-		margin-bottom: 0.5rem;
-	}
-	pre {
-		color: var(--accent-color);
-		background-color: var(--bg-accent-color);
+		/* margin-bottom: 0.5rem; */
 	}
 </style>
