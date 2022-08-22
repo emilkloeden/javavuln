@@ -51,18 +51,4 @@
 	tbody tr:nth-child(odd) {
 		background-color: var(--bg-accent-color);
 	}
-
-	.true,
-	.false {
-		color: white;
-		width: 100%;
-		text-align: center;
-		padding: 0.25em 1em;
-	}
-	.true {
-		background: green;
-	}
-	.false {
-		background-color: orangered;
-	}
 </style>

@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan')
 const cors = require('cors')
 
+const nodeEnv = process.env["NODE_ENV"] || "dev";
 const apiPort = process.env["API_PORT"] || 3001;
 const frontEndPort = process.env["FRONT_END_PORT"] || 5173;
 const dbName = process.env["DB_NAME"];
@@ -21,8 +22,9 @@ const db = new sqlite3.Database(dbName, sqlite3.OPEN_READONLY, (err) => {
 const app = express()
 
 const corsOptions = {
-    origin: `http://site:${frontEndPort}`
+    origin: `http://localhost:${frontEndPort}`
 }
+
 // app.use(cors(corsOptions))
 app.use(cors())
 app.use(morgan('combined'))
@@ -208,26 +210,7 @@ app.get('/cves/:cve/projects', (req, res) => {
     })
 })
 
-// app.get('/libraries/:libraryId', (req, res) => {
-//     const { libraryId } = req.params;
-//     const stmt = db.prepare(Q_LIBRARY)
-// })
-
-// app.get('/projects/:projectId/cves', (req, res) => {
-//     const { projectId } = req.params;
-//     console.log(projectId)
-//     const stmt = db.prepare(Q_PROJECT_AGG_CVES, [projectId])
-//     stmt.all((err, rows) => {
-//         if (err) {
-//             res.status(404)
-//             res.send()
-//         } else {
-//             res.json(rows)
-//         }
-//     })
-// })
-
-app.listen(apiPort, () => console.log(`Listening on ${apiPort}. Using CORS config: ${JSON.stringify(corsOptions)}`))
+app.listen(apiPort, () => console.log(`JavaVuln API Running in ${nodeEnv} mode, listening on ${apiPort}, using CORS config: ${JSON.stringify(corsOptions)}`))
 
 function rows2CVEs(rows) {
     return rows.map(row2CVE);

@@ -1,4 +1,6 @@
 <script>
+	import MavenDependencyXml from './MavenDependencyXML.svelte';
+
 	export let version;
 	export let group_id;
 	export let artifact_id;
